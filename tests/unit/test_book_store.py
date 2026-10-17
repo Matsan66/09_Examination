@@ -21,6 +21,7 @@ def test_book_store_add_book():
     assert expected_id in book_store.books
     assert book_store.books[expected_id].author == book_author
     assert book_store.books[expected_id].title == book_title
+    assert book_store.next_id == expected_id + 1
 
 
 @pytest.mark.unittest

@@ -56,3 +56,14 @@ def test_fav_books_add_existing_book_does_not_add_duplicate():
     # Assert
     assert len(fav_books.books) == 1
     assert fav_books.books[500] == first_book
+
+
+@pytest.mark.unittest
+def test_fav_books_remove_non_existing_book():
+    """Verify that removing a non-existing book does nothing."""
+    fav_books = FavoriteBooks()
+    book = Book(500, "My test book", "John Doe")
+
+    fav_books.remove(book)
+
+    assert fav_books.books == {}
