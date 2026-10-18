@@ -36,11 +36,20 @@ class BookStore:
         self.favorite_books = FavoriteBooks()
 
     def addBook(self, author, title):
+        """
+        Add a book to the book list
+        :param author: Book author
+        :param title:  Book title
+        """
         book = Book(self.next_id, title, author)
         self.books[self.next_id] = book
         self.next_id += 1
 
     def toggleFavorite(self, book_id):
+        """"
+        Toggle a favorite book
+        :param book_id: Book id
+        """
         if book_id not in self.books:
             return
 

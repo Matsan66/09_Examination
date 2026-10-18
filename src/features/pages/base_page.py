@@ -11,9 +11,9 @@ class BasePage:
         self.my_books_button = page.get_by_test_id("favorites")
         self.statistics_button = page.get_by_test_id("statistics")
 
-
     def navigate_to(self):
-        self.page.goto("https://tap-vt26-testautomatisering.github.io/exam/", timeout=10_000)
+        self.page.goto("https://tap-vt26-testautomatisering.github.io/exam/",
+                       timeout=10_000)
 
     def get_button_name(self, button_name):
         if button_name == "catalog":
@@ -24,6 +24,3 @@ class BasePage:
             return self.my_books_button
         elif button_name == "statistics":
             return self.statistics_button
-
-
-

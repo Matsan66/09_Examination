@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+
 # Runs before any scenarios
 def before_all(context):
     # Start Playwright and the browser - close it in after_all

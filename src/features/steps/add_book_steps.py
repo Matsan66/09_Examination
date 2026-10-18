@@ -1,6 +1,7 @@
 from behave import given, when, then
 from playwright.sync_api import expect
-from src.features.helpers import get_base_page, get_catalog_page, get_add_book_page
+from src.features.helpers import (get_base_page,
+                                  get_catalog_page, get_add_book_page)
 
 
 @when(u'jag klickar på knappen "Lägg till bok"')
@@ -71,8 +72,8 @@ def step_click_add_book_button(context):
 
 @then(u'ska formuläret tömmas')
 def step_check_form_to_be_emptied(context):
-   expect(context.add_book_page.title_field).to_be_empty()
-   expect(context.add_book_page.author_field).to_be_empty()
+    expect(context.add_book_page.title_field).to_be_empty()
+    expect(context.add_book_page.author_field).to_be_empty()
 
 
 @then(u'knappen "Lägg till ny bok" deaktiveras')
