@@ -1,0 +1,44 @@
+name: Automated Git tests examination
+
+on:
+  # Triggers starting actions
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  # The name of the job
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Fetch the code
+      - name: Check out code from repo
+        uses: actions/checkout@v7
+
+      # 2. Install Python
+      - name: Settings for Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      # 4. Linting
+      - name: Lint the code with Flake8
+        run: flake8 src tests
+
+      # 5. Run Pytest tests
+      - name: Run tests with Pytest
+        run: |
+          pytest --maxfail=1 --disable-warnings -q
+
+      # 6. Run Behave tests
+      - name: Run tests with Behave
+        run: |
+          behave --stop
