@@ -40,3 +40,12 @@
     Then ska antalet favoriter som visas överensstämma med antalet i Mina böcker
 
 
+  Scenario: Kontrollera att statistiksidan visar samma antal hjärtmarkerade böcker som Mina böcker efter att en favorit tagits bort
+    Given att jag är på startsidan
+    When jag klickar på hjärt-ikonen för en bok
+    And jag klickar på hjärt-ikonen för en bok
+    And jag klickar på knappen "Mina böcker"
+    And jag kontrollerar antal favoritböcker
+    And jag klickar på knappen "Statistik"
+    Then ska antalet favoriter som visas överensstämma med antalet i Mina böcker
+    

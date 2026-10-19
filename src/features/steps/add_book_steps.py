@@ -30,7 +30,7 @@ def step_check_author_field_visible(context):
 
 
 @given(u'att jag är i vyn för att lägga till en ny bok')
-def step_goto_add_vew_book_view(context):
+def step_goto_add_new_book_view(context):
     get_base_page(context)
     context.base_page.navigate_to()
     context.base_page.add_book_button.click(timeout=1000)

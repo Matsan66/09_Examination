@@ -147,6 +147,6 @@ acceptanskriterium: När en bok läggs till ska katalogen och statistiken visa s
 
 Som en användare   
 vill jag att statistiksidan visar samma antal hjärtmarkerade böcker som Mina böcker innehåller  
-så att jag vet att statistiken alltid är korrekt när jag favoritmarkerar en bok  
+så att jag vet att statistiken för favoritböcker alltid är korrekt  
 
-acceptanskriterium: När användaren tar bort favoritmarkeringen av en bok ska antalet hjärtmarkerade böcker minska med en
+acceptanskriterium: När användaren ändrar favoritmarkeringen av en bok ska antalet i Mina böcker och statistiken vara samma

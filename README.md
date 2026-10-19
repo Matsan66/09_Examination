@@ -122,11 +122,13 @@ böcker. Dessa används för att hämta information från sidans textelement.
 I `statistics.feature` finns scenarier som verifierar att statistikvyn visas och att texten med antalet böcker respektive antalet 
 hjärtmarkerade böcker är synlig.
 
-Därutöver finns två scenarier som jämför statistiken med informationen i övriga vyer:
+Därutöver finns tre scenarier som jämför statistiken med informationen i övriga vyer:
 
 - I det första scenariot läggs en ny bok till. Antalet böcker i katalogen sparas och jämförs sedan med antalet som visas på statistiksidan.
-- I det andra scenariot favoritmarkeras en bok. Antalet böcker i vyn Mina böcker sparas och jämförs sedan med antalet hjärtmarkerade 
-- böcker på statistiksidan.
+- I det andra scenariot favoritmarkeras en bok. Antalet böcker i vyn Mina böcker sparas och jämförs sedan med antalet hjärtmarkerade böcker 
+på statistiksidan.
+- I det tredje scenariot favoritmarkeras en bok som sedan avmarkeras igen. Antalet böcker i vyn Mina böcker sparas och jämförs sedan 
+med antalet hjärtmarkerade böcker på statistiksidan.
 
 För att hämta antalen från statistiksidans texter används det reguljära uttrycket `re.search(r"\d+", ...)` för att hitta sifferföljden. 
 Resultatet hämtas med `group()` och omvandlas till ett heltal med `int()` innan värdena jämförs med `assert`.
@@ -253,7 +255,7 @@ tests/integration/test_book_store_fav_books.py::test_toggle_favorite_removes_boo
 
 ```text
 5 features passed, 0 failed, 0 skipped
-23 scenarios passed, 0 failed, 0 skipped
-83 steps passed, 0 failed, 0 skipped
+24 scenarios passed, 0 failed, 0 skipped
+90 steps passed, 0 failed, 0 skipped
 ```
 ![Lyckad CI-körning i GitHub Actions](images/ci_example.png)
