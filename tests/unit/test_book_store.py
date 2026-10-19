@@ -1,15 +1,13 @@
 import pytest
 from unittest.mock import Mock
-from src.book_store import BookStore
 
 
 @pytest.mark.unittest
-def test_book_store_add_book():
+def test_book_store_add_book(book_store):
     """
     Verify that a book can be added to the book store.
     """
     # Arrange
-    book_store = BookStore()
     book_author = "Alex DeLarge"
     book_title = "My first test book"
     expected_id = book_store.next_id
@@ -25,12 +23,11 @@ def test_book_store_add_book():
 
 
 @pytest.mark.unittest
-def test_book_store_toggle_favorite_adds_book():
+def test_book_store_toggle_favorite_adds_book(book_store):
     """
     Verify that a book can be added as a favorite.
     """
     # Arrange
-    book_store = BookStore()
     book_id = next(iter(book_store.books))
     book = book_store.books[book_id]
 
@@ -46,12 +43,11 @@ def test_book_store_toggle_favorite_adds_book():
 
 
 @pytest.mark.unittest
-def test_book_store_toggle_favorite_removes_book():
+def test_book_store_toggle_favorite_removes_book(book_store):
     """
     Verify that a book can be removed as a favorite.
     """
     # Arrange
-    book_store = BookStore()
     book_id = next(iter(book_store.books))
     book = book_store.books[book_id]
 

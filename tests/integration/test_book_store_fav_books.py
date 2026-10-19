@@ -1,14 +1,12 @@
 import pytest
-from src.book_store import BookStore
 
 
 @pytest.mark.integrationtest
-def test_toggle_favorite_adds_book():
+def test_toggle_favorite_adds_book(book_store):
     """
     Verify that a book can be added as a favorite.
     """
     # Arrange
-    book_store = BookStore()
     book_id = next(iter(book_store.books))
 
     # Act
@@ -19,12 +17,11 @@ def test_toggle_favorite_adds_book():
 
 
 @pytest.mark.integrationtest
-def test_toggle_favorite_removes_book():
+def test_toggle_favorite_removes_book(book_store):
     """
     Verify that a book can be removed as a favorite.
     """
     # Arrange
-    book_store = BookStore()
     book_id = next(iter(book_store.books))
 
     # Act

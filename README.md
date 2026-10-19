@@ -34,6 +34,17 @@ läggs till eller tas bort från favoritlistan.
 1. `test_toggle_favorite_adds_book`
 2. `test_toggle_favorite_removes_book`
 
+#### Pytest Fixtures
+
+För att förenkla testernas förberedelser och undvika duplicerad kod används pytest fixtures, definierade i tests/conftest.py.
+
+Två fixtures används för att skapa testobjekt:  
+- book_store: Skapar en instans av klassen BookStore. 
+- favorite_books: Skapar en instans av klassen FavoriteBooks.
+
+Fixtures återanvänds i både enhets- och integrationstesterna. Pytest tillhandahåller automatiskt objekten när respektive 
+fixture anges som parameter i en testfunktion. Detta ger en konsekvent testmiljö och gör testerna enklare att läsa och underhålla.
+
 ### ⚪ E2E-tester med Gherkin, Behave och Playwright
 
 #### Teststrategi och struktur
@@ -169,6 +180,30 @@ med Gherkin, medan step-filerna kopplar stegen till Python-kod och Page Object-k
 Testerna körs med Behave och synkron Playwright. Hela E2E-testsviten kan köras från projektets rotkatalog med kommandot `behave`. 
 Resultatet visar hur många features, scenarier och steg som har passerat eller misslyckats.
 
+## 🟡 CI-implementation
+
+Continuous Integration (CI) har implementerats med GitHub Actions för att automatiskt kontrollera projektet när kod pushas till brancherna 
+main eller dev, samt vid pull requests mot dessa brancher.
+
+Arbetsflödet består av följande steg:
+
+Miljöuppsättning: Hämtar projektets kod, installerar Python 3.14 och installerar beroenden från requirements.txt.
+
+Kodkvalitet: Använder Flake8 för att identifiera kodstilproblem och potentiella fel i Python-koden.
+
+Automatiserade tester: Kör enhets- och integrationstester med pytest, följt av BDD-scenarier med Behave.
+
+Headless browser-testning: Installerar Chromium och kör Playwright-baserade webbläsartester i headless-läge, utan att ett 
+grafiskt webbläsarfönster behöver visas.
+
+Arbetsflödet avbryts om något steg misslyckas, vilket gör det enklare att identifiera problem tidigt. Resultatet av varje 
+körning visas i GitHub Actions.
+
+CI-lösningen har verifierats genom en lyckad körning där samtliga kontroller och testsviter passerade.
+
+
+
+
 ## 🟦 Start av tester
 
 Jag har använt Pytest-markers för att separera körningen av enhets- och integrationstester.
@@ -221,3 +256,4 @@ tests/integration/test_book_store_fav_books.py::test_toggle_favorite_removes_boo
 23 scenarios passed, 0 failed, 0 skipped
 83 steps passed, 0 failed, 0 skipped
 ```
+![Lyckad CI-körning i GitHub Actions](images/ci_example.png)
